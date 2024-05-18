@@ -62,21 +62,23 @@ public class TechnologyController {
         return "redirect:/technologies";
     }
 
-    @GetMapping("/technologies/{technologyId}/edit")
-    public String showEditTechnologyForm(@PathVariable("technologyId") Long technologyId, Model model) {
-        // Logic to fetch technology details by technologyId and pass to the edit form
-        return "edit_technology";
+    @GetMapping("/editTechnology")
+    public String editTechnology(Model model, @RequestParam(name = "id") Integer id) {
+        Technology Technology = technologyManager.getTechnologyById(id);
+        if (Technology != null) {
+            model.addAttribute("technologyToBeUpdated", Technology);
+            return "updateTechnology";
+        } else {
+            return "error";
+        }
     }
 
-    @PostMapping("/technologies/{technologyId}/edit")
-    public String editTechnology(@PathVariable("technologyId") Long technologyId, @ModelAttribute Technology technology) {
-        // Logic to update the technology details
-        return "redirect:/technologies/{technologyId}";
-    }
-
-    @PostMapping("/technologies/{technologyId}/delete")
-    public String deleteTechnology(@PathVariable("technologyId") Long technologyId) {
-        // Logic to delete the technology
-        return "redirect:/technologies";
+    @GetMapping("/deleteTechnology")
+    public String deleteTechnology(Model model, @RequestParam(name = "id") Integer id) {
+        if (technologyManager.deleteTechnology(id)) {
+            return "redirect:/technologies";
+        } else {
+            return "error";
+        }
     }
 }

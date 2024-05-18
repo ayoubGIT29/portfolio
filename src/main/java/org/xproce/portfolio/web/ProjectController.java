@@ -81,7 +81,7 @@ public class ProjectController {
         Project Project = projectManager.getProjectById(id);
         if (Project != null) {
             model.addAttribute("projectToBeUpdated", Project);
-            return "updateProduct";
+            return "updateProject";
         } else {
             return "error";
         }
