@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com">
+<head>
+    <meta charset="utf-8"/>
+    <title>Index page</title>
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/5.3.3/css/bootstrap.min.css"/>
+    <script src="webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<div class="container" align="center">
+    <form action="ajouterTechnologie" method="post">
+        <div class="mb-3">
+            <label class="form-label">Title</label>
+            <input type="text" class="form-control w-50" id="title" name="title">
+            <!--                <span class="text-danger"  th:errors="${project.title}"></span>-->
+        </div>
+
+
+        <button type="submit" class="btn btn-primary form-control w-50" value="Ajouter">Ajouter</button>
+    </form>
+</div>
+
+</body>
+</html>

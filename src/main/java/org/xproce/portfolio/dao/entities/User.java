@@ -1,29 +1,37 @@
 package org.xproce.portfolio.dao.entities;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.util.Date;
 
 @Entity
-@Table(name = "project")
+@Table(name = "users")
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Project{
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private long id;
+
     @NotEmpty
     @Size(max = 100)
-    private String title;
+    private String username;
+
     @NotEmpty
-    @Pattern(regexp = "[A-Za-z0-9 ]*")
-    private String designation;
+    @Email
+    private String email;
+
+    @NotEmpty
+    private String password;
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at", nullable = false, updatable = false)
     private Date createdAt;
@@ -31,5 +39,8 @@ public class Project{
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "modified_at")
     private Date modifiedAt;
+
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+//    private List<Project> projects;
 
 }
