@@ -6,7 +6,10 @@ import org.xproce.portfolio.dao.entities.Category;
 public interface CategoryManager {
     Category addCategory(Category category);
     Page<Category> getAllCategories(int page, int size);
-    Category getCategoryById(Long id);
+
+    public Page<Category> searchCategories(String keyword, int page, int taille);
+
+    Category getCategoryById(Integer id);
     Category updateCategory(Category category);
-    boolean deleteCategory(Long id);
+    boolean deleteCategory(Integer id);
 }

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category Details</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Category Details</h1>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">${category.title}</h5>
+            <p class="card-text"><strong>Created:</strong> ${category.createdDate}</p>
+            <p class="card-text"><strong>Updated:</strong> ${category.updatedDate}</p>
+            <a href="/editCategory?id=${category.id}" class="btn btn-warning">Edit</a>
+            <a href="/deleteCategory?id=${category.id}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this category?');">Delete</a>
+            <a href="/categories" class="btn btn-secondary">Back to Categories</a>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

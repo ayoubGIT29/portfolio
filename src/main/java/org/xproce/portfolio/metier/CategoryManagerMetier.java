@@ -23,8 +23,12 @@ public class CategoryManagerMetier implements CategoryManager {
         return categoryRepository.findAll(PageRequest.of(page, size));
     }
 
+    public Page<Category> searchCategories(String keyword, int page, int taille){
+        return categoryRepository.findByNameContains(keyword, PageRequest.of(page, taille));
+    }
+
     @Override
-    public Category getCategoryById(Long id) {
+    public Category getCategoryById(Integer id) {
         return categoryRepository.findById(id).orElse(null);
     }
 
@@ -34,7 +38,7 @@ public class CategoryManagerMetier implements CategoryManager {
     }
 
     @Override
-    public boolean deleteCategory(Long id) {
+    public boolean deleteCategory(Integer id) {
         try {
             categoryRepository.deleteById(id);
             return true;

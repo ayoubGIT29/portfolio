@@ -35,9 +35,14 @@ public class TechnologyController {
     }
 
     @GetMapping("/technologies/{technologyId}")
-    public String showTechnologyDetails(@PathVariable("technologyId") Long technologyId, Model model) {
-        // Logic to fetch technology details by technologyId and pass to the view
-        return "technology_details";
+    public String showTechnologyDetails(@PathVariable("technologyId") Integer technologyId, Model model) {
+        Technology technology = technologyManager.getTechnologyById(technologyId);
+        if (technology != null) {
+            model.addAttribute("technology", technology);
+            return "technology_details";
+        } else {
+            return "error";
+        }
     }
 
     @GetMapping("/technologies/add")
@@ -51,9 +56,9 @@ public class TechnologyController {
     public String ajouterTechnologieAction(Model model,
                                        @RequestParam(name = "title") String title,
                                        @RequestParam(name = "id", defaultValue =  "") Integer id) {
-        Technology technology  = new Technology(id, title,new Date(),new Date());
-        technologyManager.addTechnology(technology);
-        return "redirect:indexpage";
+        Technology Technology  = new Technology(id, title,new Date(),new Date());
+        technologyManager.addTechnology(Technology);
+        return "redirect:technologies";
     }
 
     @PostMapping("/technologies")

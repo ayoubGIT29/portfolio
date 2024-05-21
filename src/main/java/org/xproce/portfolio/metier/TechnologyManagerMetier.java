@@ -18,14 +18,16 @@ public class TechnologyManagerMetier implements TechnologyManager {
         return technologyRepository.save(technology);
     }
 
-    public Page<Technology> searchTechnologies(String keyword, int page, int taille){
-        return technologyRepository.findByNameContains(keyword, PageRequest.of(page, taille));
-    }
+
 
 
     @Override
     public Page<Technology> getAllTechnologies(int page, int size) {
         return technologyRepository.findAll(PageRequest.of(page, size));
+    }
+
+    public Page<Technology> searchTechnologies(String keyword, int page, int taille){
+        return technologyRepository.findByNameContains(keyword, PageRequest.of(page, taille));
     }
 
     @Override
