@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8"/>
   <title>Index page</title>
@@ -9,7 +10,25 @@
 
 <div class="p-3 m-2">
   <div class="card">
-    <div class="card-header">Liste Projects | <a href="ajouterProject">Ajouter Project</a></div>
+    <div class="card-header">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <ul class="navbar nav">
+        <li><a class="btn-dark" th:href="@{indexpage}">Index</a> |</li>
+
+        <li><a class="btn-dark" th:href="@{ajouterProject}">Add Project</a></li>
+
+
+
+
+        <li sec:authorize="isAuthenticated()">
+          | <a class="btn-dark" th:href="@{/logout}">Logout</a></li>
+
+
+        <li sec:authorize="!isAuthenticated()">
+          | <a class="btn-dark" th:href="@{/login}">Log In</a></li>
+      </ul>
+    </nav>
+    </div>
     <div class="card-body">
 
 

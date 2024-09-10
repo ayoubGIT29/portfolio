@@ -4,11 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.xproce.portfolio.dao.entities.Technology;
 import org.xproce.portfolio.metier.ProjectManager;
 import org.xproce.portfolio.metier.TechnologyManager;
-
-import java.util.Date;
 
 @SpringBootApplication
 public class PortfolioApplication implements CommandLineRunner {
@@ -42,7 +39,5 @@ public class PortfolioApplication implements CommandLineRunner {
 //        projectManager.addProject(Project6);
 //        projectManager.addProject(Project7);
 //        projectManager.addProject(Project8);
-        Technology Project0 = new Technology(null, "Javascript",new Date(),new Date());
-        technologyManager.addTechnology(Project0);
-    }
+        }
 }
